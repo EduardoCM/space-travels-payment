@@ -1,7 +1,7 @@
 package com.spacetravels.payment.order;
 
 import com.spacetravels.payment.constant.Pais;
-import com.spacetravels.payment.model.PagoRealizado;
+import com.spacetravels.payment.model.Ticket;
 
 public abstract class Pedido {
 	
@@ -24,8 +24,8 @@ public abstract class Pedido {
 		this.importeSinIVA = importeSinIVA;
 	}
 
-	public PagoRealizado obtenerPagoRealizado(String nombre, Pais pais) {
-		PagoRealizado pagoRealizado = new PagoRealizado();
+	public Ticket obtenerPagoRealizado(String nombre, Pais pais) {
+		Ticket pagoRealizado = new Ticket();
 		pagoRealizado.importeSinIVA = importeSinIVA;
 		pagoRealizado.importeIVA = importeIVA;
 	    pagoRealizado.importeConIVA = importeConIVA;

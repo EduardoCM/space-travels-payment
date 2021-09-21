@@ -3,7 +3,7 @@ package com.spacetravels.payment.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.spacetravels.payment.model.PagoRealizado;
+import com.spacetravels.payment.model.Ticket;
 import com.spacetravels.payment.model.PagoRequest;
 import com.spacetravels.payment.order.Pedido;
 import com.spacetravels.payment.order.pais.PedidoColombia;
@@ -20,11 +20,13 @@ public class PaymentController {
 
 	private Pedido pedido;
 	
-	//static List<PagoRealizado> pagosRealizados = new ArrayList<PagoRealizado>();
-
+	static List<Ticket> tickets = new ArrayList<Ticket>();
+        
+        
+   
 	@Post
-	public PagoRealizado pagar(@Body PagoRequest pago) {
-		PagoRealizado pagoRealizado = null;
+	public Ticket pagar(@Body PagoRequest pago) {
+		          Ticket pagoRealizado = null;
 		switch (pago.pais) {
 		case MEXICO:
 			pedido = new PedidoMexico();
@@ -45,10 +47,10 @@ public class PaymentController {
 			pagoRealizado = pedido.obtenerPagoRealizado(pago.nombreCliente, pago.pais);
 		 break;
 		default:
-			pagoRealizado = new PagoRealizado();
+			pagoRealizado = new Ticket();
 		}
 		
-		//pagosRealizados.add(pagoRealizado);
+		tickets.add(pagoRealizado);
 		return pagoRealizado;
 	}
 	
@@ -57,11 +59,10 @@ public class PaymentController {
 		return "Payment 3.0";
 	}
 	
-	/*
-	@Get("/pagos")
-	public List<PagoRealizado> getPagosrealizados(){
-		return pagosRealizados;
+	@Get("/tickets")
+	public List<Ticket> getPagosrealizados(){
+		return tickets;
 	}
-	*/
-
+       
+	
 }

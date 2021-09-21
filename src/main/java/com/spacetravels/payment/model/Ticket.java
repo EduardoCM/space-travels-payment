@@ -2,7 +2,7 @@ package com.spacetravels.payment.model;
 
 import com.spacetravels.payment.constant.Pais;
 
-public class PagoRealizado {
+public class Ticket {
 	
 	public String nombre;
 	
